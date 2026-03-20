@@ -3,7 +3,14 @@
 <head>
   <meta charset="utf-8">
   <script>
-    location.replace("https://submarginally-unsluggish-weldon.ngrok-free.dev/");
+    fetch("./config.json")
+      .then(r => r.json())
+      .then(cfg => {
+        location.replace(cfg.redirect);
+      })
+      .catch(() => {
+        document.body.innerText = "Redirect config load failed.";
+      });
   </script>
 </head>
 <body>
