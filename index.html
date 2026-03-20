@@ -8,9 +8,14 @@ fetch("./config.json")
     console.log("status:", r.status);
     return r.json();
   })
-  .then(cfg => {
+  .then(async cfg => {
     console.log("config:", cfg);
-    location.replace(cfg.redirect);
+    try {
+      await fetch(cfg.redirect, { mode: "no-cors" });
+      location.replace(cfg.redirect);
+    } catch (e) {
+      document.body.innerHTML = "<h1>🚧 维护中</h1><p>服务器暂时不可用，请稍后再试。</p>";
+    }
   })
   .catch(e => {
     console.error(e);
