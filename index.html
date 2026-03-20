@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<script>
-fetch("./config.json")
-  .then(r => {
-    console.log("status:", r.status);
-    return r.json();
-  })
-  .then(cfg => {
-    console.log("config:", cfg);
-    location.replace(cfg.redirect);
-  })
-  .catch(e => {
-    console.error(e);
-    document.body.innerText = "Config load failed: " + e;
-  });
-</script>
-</head>
-<body></body>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            const url = "https://submarginally-unsluggish-weldon.ngrok-free.dev/";
+            location.replace(url);
+        </script>
+    </head>
+    <body></body>
 </html>
