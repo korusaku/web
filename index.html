@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <script>
-    fetch("./config.json")
-      .then(r => r.json())
-      .then(cfg => {
-        location.replace(cfg.redirect);
-      })
-      .catch(() => {
-        document.body.innerText = "Redirect config load failed.";
-      });
-  </script>
+<meta charset="utf-8">
+<script>
+fetch("./config.json")
+  .then(r => {
+    console.log("status:", r.status);
+    return r.json();
+  })
+  .then(cfg => {
+    console.log("config:", cfg);
+    location.replace(cfg.redirect);
+  })
+  .catch(e => {
+    console.error(e);
+    document.body.innerText = "Config load failed: " + e;
+  });
+</script>
 </head>
-<body>
-</body>
+<body></body>
 </html>
